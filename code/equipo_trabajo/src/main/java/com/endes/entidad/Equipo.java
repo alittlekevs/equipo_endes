@@ -1,5 +1,6 @@
 package com.endes.entidad;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -24,6 +25,11 @@ public class Equipo {
         if (p == null) {
             throw new IllegalArgumentException("El miembro no puede ser nulo.");
         }
+        for (Personal m : miembros) {
+			if (p.getDni()==m.getDni()) {
+				throw new IllegalArgumentException("El miembro ya existe");
+			}
+		}
         miembros.add(p);
     }
 
