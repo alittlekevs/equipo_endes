@@ -1,5 +1,7 @@
 package com.endes.entidad;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -17,8 +19,10 @@ class EquipoTest {
     @BeforeEach
     void setUp() throws Exception {
         equipo = new Equipo();
+        
     }
 
+    
     @Test
     @DisplayName("Añadir un miembro con DNI único no lanza excepción; el duplicado sí")
     void testAñadirMiembroDuplicado() {
@@ -49,13 +53,13 @@ class EquipoTest {
      * - Comprueba que el tamaño de la lista es 1.
      * - Verifica que el miembro añadido es el esperado.
      */
-    /*
+   
     @Test
     @DisplayName("Añadir un miembro válido al equipo")
     void testAñadirMiembroValido() {
         // Tu código aquí
     }
-    */
+    
 
     /**
      * Debes implementar esta prueba para verificar que el método
@@ -67,19 +71,20 @@ class EquipoTest {
      * - Comprueba que la lista tiene el tamaño correcto.
      * - Verifica que los valores de productividad son los esperados.
      */
-    /*
+    
     @Test
     @DisplayName("Listar las productividades del equipo")
     void testListarProductividades() {
-        // Tu código aquí
+        
     }
-    */
+    
     /**
      * Verifica que un equipo nuevo se inicializa con la lista de miembros vacía.
      */
+    
     @Test
     @DisplayName("El equipo debe comenzar con la lista de miembros vacía")
-    void testEquipoInicialVacio() {
+    void testEquipoInicialVacio() { 
         assertNotNull(equipo.getMiembros(), "La lista de miembros no debe ser null");
         assertEquals(0, equipo.getMiembros().size(), "El equipo debe comenzar vacío");
     }
@@ -88,10 +93,19 @@ class EquipoTest {
      * Verifica que no se puede añadir un miembro null al equipo.
      * Debe lanzarse IllegalArgumentException con el mensaje adecuado.
      */
-    /*  @Test
+    
+    @Test
     @DisplayName("No se permite añadir un miembro null al equipo")
     void testAñadirMiembroNull() {
-          // Tu código aquí
+    	Personal p = null;
+    	IllegalArgumentException exception = null; 
+    	String mensajeEsperado = "No se puede añadir un miembro nulo";
+    	try {
+    		equipo.añadirMiembro(p);
+		} catch (IllegalArgumentException e) {
+			exception = e;
+		}
+    	assertEquals(mensajeEsperado, exception.getMessage());
     }
-    */
+    
 }
